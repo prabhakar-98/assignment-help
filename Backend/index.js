@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
     
 app.use("/user",RegisterController)
 
-app.use("/projects",Authentication,ProjectController)
+app.use("/projects",ProjectController)
 
 app.use("/tags",Authentication,TagController)
 

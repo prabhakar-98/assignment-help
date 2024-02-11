@@ -18,7 +18,7 @@ RegisterController.post("/signup",AlreadyRegistered,EmailValidator,PasswordValid
     })
 })
 
-
+secretOrPrivate="fbdsfhdhdhrhli7ituyrjhsg"
 RegisterController.post("/login",EmailValidator, async(req, res) => {
     const { email, password } = req.body
     const user = await SignupModel.findOne({ email })
@@ -27,7 +27,7 @@ RegisterController.post("/login",EmailValidator, async(req, res) => {
         const hashedPassword = user.password
         bcrypt.compare(password, hashedPassword, (err, result) => {
         if(result) {
-            const token = jwt.sign({ userId: user.id, email: user.email }, process.env.SECRET_KEY)
+            const token = jwt.sign({ userId: user.id, email: user.email }, secretOrPrivate)
             res.send({"msg":"Login Successfull",token})
             }
             else{res.send({"msg":"Please Login"})}
